@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/chris-warner/bamazon/issues"
   },
-  "homepage": "https://github.com/chris-warner/bamazon#readme"
+  "homepage": "https://github.com/chris-warner/bamazon#readme",
+  "dependencies": {
+    "mysql": "^2.16.0",
+    "prompt": "^1.0.0"
+  }
 }
