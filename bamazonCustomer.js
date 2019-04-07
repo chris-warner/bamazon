@@ -39,9 +39,12 @@ function queryItemID(id, quantity) {
                 console.log("Insuffiecient quantity!");
             }
             if (quantity <= res[i].stock_quantity) {
+                let newQuanity = res[i].stock_quantity - quantity;
+                console.log("remaining product: " + newQuanity);
                 console.log("Sufficient quantity, your order was successfully placed!");
                 console.log("ORDER DETAILS");
-                console.log("Total Price per unit: $" + (res[i].price * quantity));
+                connection.query("UPDATE products SET ? WHERE ?",[{stock_quantity: newQuanity},{item_id: res[i].item_id]);
+                console.log("Your order comes out to : $" + (res[i].price * quantity));
             }
         }
         connection.end();
