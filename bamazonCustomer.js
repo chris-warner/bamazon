@@ -31,7 +31,7 @@ function queryAllProducts() {
 }
 
 
-function queryItemID(id,quantity) {
+function queryItemID(id, quantity) {
     var query = connection.query("SELECT * FROM products WHERE item_id=?", [id], function (err, res) {
         for (var i = 0; i < res.length; i++) {
             console.log(res[i].item_id + " | " + res[i].product_name + " | " + res[i].department_name + " | " + res[i].price + " | " + res[i].stock_quantity);
@@ -46,24 +46,23 @@ function queryItemID(id,quantity) {
     });
 }
 
-
-    function buyProducts() {
-        let order_product_ID;
-        let order_units;
-        prompt.start();
-        prompt.get([{
-            name: 'product_ID',
-            required: true
-        }, {
-            name: 'Units',
-            required: true
-        }], function (err, result) {
-            order_product_ID = result.product_ID;
-            order_units = result.Units;
-            console.log('Command-line input received:');
-            console.log('  product_ID: ' + result.product_ID);
-            console.log('  Units: ' + result.Units);
-            queryItemID(order_product_ID,order_units);
-        });
-    }
+function buyProducts() {
+    let order_product_ID;
+    let order_units;
+    prompt.start();
+    prompt.get([{
+        name: 'product_ID',
+        required: true
+    }, {
+        name: 'Units',
+        required: true
+    }], function (err, result) {
+        order_product_ID = result.product_ID;
+        order_units = result.Units;
+        console.log('Order details:');
+        console.log('  product_ID requested: ' + result.product_ID);
+        console.log('  Units requested: ' + result.Units);
+        queryItemID(order_product_ID, order_units);
+    });
+}
 buyProducts();
