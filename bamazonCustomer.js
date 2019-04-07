@@ -40,6 +40,8 @@ function queryItemID(id, quantity) {
             }
             if (quantity <= res[i].stock_quantity) {
                 console.log("Sufficient quantity, your order was successfully placed!");
+                console.log("ORDER DETAILS");
+                console.log("Total Price per unit: $" + (res[i].price * quantity));
             }
         }
         connection.end();
